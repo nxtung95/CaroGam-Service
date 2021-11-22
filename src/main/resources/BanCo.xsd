@@ -1,0 +1,87 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   xmlns:tns="http://carogameservice/ws"
+		   targetNamespace="http://carogameservice/ws" elementFormDefault="qualified">
+
+	<xs:element name="khoiTaoBanCoRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="soHang" type="xs:int" />
+				<xs:element name="soCot" type="xs:int" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="khoiTaoBanCoResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ketQua" type="xs:boolean" />
+				<xs:element name="moTa" type="xs:string" />
+				<xs:element name="banCo" type="tns:BanCo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="kiemTraTinhHopLeRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hang" type="xs:int" />
+				<xs:element name="cot" type="xs:int" />
+				<xs:element name="type" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="kiemTraTinhHopLeResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ketQua" type="xs:boolean" />
+				<xs:element name="moTa" type="xs:string" />
+				<xs:element name="quanCo" type="tns:QuanCo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="kiemTraThangRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hang" type="xs:int" />
+				<xs:element name="cot" type="xs:int" />
+				<xs:element name="type" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="kiemTraThangResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ketQua" type="xs:boolean" />
+				<xs:element name="moTa" type="xs:string" />
+				<xs:element name="quanCo" type="tns:QuanCo" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="QuanCo">
+		<xs:sequence>
+			<xs:element name="hang" type="xs:int"/>
+			<xs:element name="cot" type="xs:int"/>
+			<xs:element name="type" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="Player">
+		<xs:sequence>
+			<xs:element name="listQuanCo" type="tns:QuanCo" maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BanCo">
+		<xs:sequence>
+			<xs:element name="soHang" type="xs:int" />
+			<xs:element name="soCot" type="xs:int" />
+			<xs:element name="player" type="tns:Player" />
+			<xs:element name="listQuanCo" type="tns:QuanCo" maxOccurs="unbounded" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
